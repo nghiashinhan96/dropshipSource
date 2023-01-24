@@ -1,0 +1,4 @@
+spring:
+  url:
+    seleHost: 127.0.0.1
+    selePort: 4445

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    redis-for-docker:
+        image: redis
+        volumes:
+            - redis-data:/data
+        ports:
+            - 6379:6379
+    spring-web:
+        image: first-docker-image:latest
+        depends_on:
+            - redis-for-docker
+        ports:
+            - 8085:8080
+volumes:
+    redis-data: null

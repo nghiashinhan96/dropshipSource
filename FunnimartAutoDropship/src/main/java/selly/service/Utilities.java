@@ -9,11 +9,9 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Optional;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
 public class Utilities {
@@ -98,7 +96,7 @@ public class Utilities {
 
     public static void main(String[] args) {
         String source = "D:/funniMart/Áo sat nách nam dáng thể thao thoáng mát ASN001 - UC-D9F4-275/funi-ao-sat-nach-nam-dang-the-thao-thoang-mat-asn001.zip";
-        String targetDir = "D:/funniMart/ao-khoac";
+        String targetDir = "D:/funniMart/Áo sat nách nam dáng thể thao thoáng mát ASN001 - UC-D9F4-275";
         try {
             unzipFolder(source, targetDir);
         } catch (Exception ex) {
@@ -107,8 +105,36 @@ public class Utilities {
 
     }
 
+    public void scanTheFolderAndUnzip(String folderPath) {
+        List<String> listFolder = null;
+        File folderToScan = new File(folderPath);
+        for (final File fileEntry : folderToScan.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                listFolder.add(fileEntry.getAbsolutePath());
+            }
+        }
+        Optional.ofNullable(listFolder).ifPresent( listFd -> {
+            listFd.forEach(folderP -> {
+                try {
+                    unzipFolder(folderP, getZipFilePath(folderP));
+                } catch (IOException ex) {
+                    System.out.println("Exception to unzip folder: "+folderP+" : "+ex);
+                    ex.printStackTrace();
+                }
+            });
+        } );
+    }
 
-    private static void unzip(String zipFilePath, String destDir) {
+    private String getZipFilePath(String folderPath) throws FileNotFoundException{
+        String zipFilePath = null;
+        /*File folderGetZip = new File(folderPath);
+        for (){
+
+        }*/
+        return zipFilePath;
+    }
+
+    public static void unzip(String zipFilePath, String destDir) {
         File dir = new File(destDir);
         // create output directory if it doesn't exist
         if (!dir.exists())

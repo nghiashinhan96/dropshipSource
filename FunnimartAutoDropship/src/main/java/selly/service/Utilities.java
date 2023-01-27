@@ -6,7 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Optional;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 
 public class Utilities {
     public static void sleep(int sleepTime){
@@ -19,8 +27,8 @@ public class Utilities {
     }
 
     public static void moveFolder(String folderName){
-        File src = new File("D://sellyDownload");
-        File dest = new File("D://selly//"+folderName+"");
+        File src = new File("D://funniMartDownload");
+        File dest = new File("D://funniMart//"+folderName+"");
 
         try {
             if(!dest.exists()){
@@ -68,10 +76,6 @@ public class Utilities {
         }
     }
 
-    public static void main(String[] args) {
-        createNewFolder("D://selly//sellDownload");
-    }
-
     public static void gotoTopPage(WebDriver driver){
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
     }
@@ -83,4 +87,92 @@ public class Utilities {
     public static void clichByJS(WebDriver driver, WebElement element){
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
+
+    public static Path zipSlipProtect(ZipEntry zipEntry, Path targetDir) throws  IOException{
+        Path targetDirResolved = targetDir.resolve(zipEntry.getName());
+        Path normalizePath = targetDirResolved.normalize();
+        if (!normalizePath.startsWith(targetDir)) {
+            throw new IOException("Bad zip entry: " + zipEntry.getName());
+        }
+
+        return normalizePath;
+    }
+
+    public static void main(String[] args) {
+        String source = "D:/funniMart/ao-khoac/funi-ao-khoac-du-2-trong-1-chuyen-doi-thanh-balo-chong-tham-nuoc-lakbl015.zip";
+        String targetDir = "D:/funniMart/ao-khoac";
+        try {
+            unzip(source, targetDir);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+    }
+
+
+    private static void unzip(String zipFilePath, String destDir) {
+        File dir = new File(destDir);
+        // create output directory if it doesn't exist
+        if (!dir.exists())
+            dir.mkdirs();
+        FileInputStream fis;
+        //buffer for read and write data to file
+        byte[] buffer = new byte[1024];
+        try {
+            fis = new FileInputStream(zipFilePath);
+            ZipInputStream zis = new ZipInputStream(fis);
+            ZipEntry ze = zis.getNextEntry();
+            while (ze != null ) {
+                //String updateDir
+                if(!ze.getName().contains("jpg")){
+                    new File(destDir+"/"+ze.getName()).mkdirs();
+                    //destDir = destDir+"/"+ze.getName();
+                }else{
+                    String fileName = ze.getName();
+                    File newFile = new File(destDir + File.separator + fileName);
+                    System.out.println("Unzipping to " + newFile.getAbsolutePath());
+                    //create directories for sub directories in zip
+                    File parentFile = new File(newFile.getParent());
+                    if (!parentFile.exists())
+                    { parentFile.mkdirs();
+                        //new File(newFile.getParent()).mkdirs();
+                        System.out.println("newFile.getParent(): "+newFile.getParent());}
+                    FileOutputStream fos = new FileOutputStream(newFile);
+                    int len;
+                    while ((len = zis.read(buffer)) > 0) {
+                        fos.write(buffer, 0, len);
+                    }
+                    fos.close();
+                    //close this ZipEntry
+                    zis.closeEntry();
+                    ze = zis.getNextEntry();
+                }
+
+            }
+            //close last ZipEntry
+            zis.closeEntry();
+            zis.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+public static void unzip(InputStream iS, Path targetPath) throws IOException {
+        targetPath = targetPath.toAbsolutePath();
+        try(ZipInputStream zipStream = new ZipInputStream(iS)) {
+            for (ZipEntry ze; (ze = zipStream.getNextEntry()) != null; ) {
+                Path resolvedPath = targetPath.resolve(ze.getName()).normalize();
+                if (!resolvedPath.startsWith(targetPath)) {
+                    throw new RuntimeException("Entry is invalid path: " + ze.getName());
+                }
+                if(ze.isDirectory()){
+                    Files.createDirectories(resolvedPath);
+                }else{
+                    Files.createDirectories(resolvedPath.getParent());
+                    Files.copy(zipStream, resolvedPath);
+                }
+            }
+        }
+}
+
 }

@@ -1,6 +1,7 @@
 package selly.service;
 
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -33,9 +34,10 @@ public class FunnimartService {
 
     public void loginFunnimart(String browser, String sellyUrl, String email, String password) throws Exception{
         LoginPage loginPage = new LoginPage(webdriver);
+        Utilities.sleep(5000);
         loginPage.setInputEmail(email);
         loginPage.setPassword(password);
-        loginPage.clickLogin();
+        //loginPage.pressEnter();
     }
 
     public void gotoSellyHomePageAndSearch(String keyWord){
@@ -57,16 +59,16 @@ public class FunnimartService {
 
     public void serviceGetItemInfo(int itemIndex) throws ElementClickInterceptedException {
         //"D://sellyDownload//content.txt"
-        System.out.println("serviceGetItemInfo "+itemIndex);
+        System.out.println("serviceGetItemInfo " + itemIndex);
         SearchResultPage searchResultPage = new SearchResultPage(webdriver);
-         searchResultPage.getItemInfo(itemIndex);
-            searchResultPage.downloadInmage();
-            Utilities.sleep(10000);
-            System.out.println("move Folder");
-            searchResultPage.moveFolder();
-            Utilities.gotoTopPage(webdriver);
-            searchResultPage.closeProductInfoPopup();
-       // searchResultPage.createNewContentFile("D://sellyDownload//content.txt");
+        searchResultPage.getItemInfo(itemIndex);
+        searchResultPage.downloadImageButton();
+        //searchResultPage.downloadInmage();
+        Utilities.sleep(10000);
+        System.out.println("move Folder");
+        searchResultPage.moveFolder();
+        Utilities.gotoTopPage(webdriver);
+        // searchResultPage.createNewContentFile("D://sellyDownload//content.txt");
 
     }
 

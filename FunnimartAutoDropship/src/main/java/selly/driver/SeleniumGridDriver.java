@@ -31,7 +31,6 @@ public class SeleniumGridDriver {
         //String host = "10.1.64.41";
         //System.setProperty("webdriver.chrome.driver", "D://TPFico//FromThaiNT7//project1//project1//chromedriver.exe");
 
-
         this.browser = browser;
         this.os = os;
         this.baseUrl = baseUrl;
@@ -45,7 +44,7 @@ public class SeleniumGridDriver {
             prefs.put("profile.default_content_setting_values.automatic_downloads", 1);
 //Turns off download prompt
             prefs.put("download.prompt_for_download", false);
-            prefs.put("download.default_directory", "D:\\sellyDownload");
+            prefs.put("download.default_directory", "D:\\funniMartDownload");
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setExperimentalOption("prefs", prefs);
             chromeOptions.setCapability("chrome.switches", Arrays.asList("--ignore-certificate-errors"));

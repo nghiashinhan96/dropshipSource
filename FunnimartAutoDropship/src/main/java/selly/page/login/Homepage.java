@@ -13,12 +13,12 @@ public class Homepage {
     //"//span[contains(text(), 'This field is required.')]"
     //d-block cursor-pointer d-contents
     //d-block cursor-pointer d-contents
-    @FindBy(how = How.XPATH, using = "//div[@class='Button-l2616d-0 kDftjj']")
+    @FindBy(how = How.XPATH, using = "//button[@class='Button-l2616d-0 kDftjj']")
     @CacheLookup
     private WebElement gotoShopPageButton;
 
     //bg-white rounded input-group
-    @FindBy(how = How.ID, using = "0.04484302027236664")
+    @FindBy(how = How.XPATH, using = "//input[@class='TextFieldStyle__SyledTextField-h6a756-0 jwhSfC search-field']")
     @CacheLookup
     private WebElement searchInput;
 
@@ -32,7 +32,7 @@ public class Homepage {
     }
 
     public void searchWithKeyWord(String keyWord){
-        searchInput.sendKeys(Keys.DELETE);
+        searchInput.sendKeys(Keys.CLEAR);
         searchInput.sendKeys(keyWord);
         searchInput.sendKeys(Keys.ENTER);
     }

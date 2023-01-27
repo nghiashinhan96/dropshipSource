@@ -12,29 +12,27 @@ import selly.service.Utilities;
 
 import java.io.File;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class SearchResultPage {
     public SearchResultPage(WebDriver webdriver){
         PageFactory.initElements(webdriver, this);
     }
-    //modal-dialog modal-lg modal-dialog-centered
-    @FindBy(how = How.XPATH, using = "//div[@class='modal-header']//button")
-    @CacheLookup
-    private WebElement closeProductInfoPopup;
+
 
     //justify-content-center modal-footer
     @FindBy(how = How.XPATH, using = "//div[contains(@class, 'justify-content-center modal-footer')]//button]")
     @CacheLookup
     private WebElement addTobasketButton;
 
-    @FindBy(how = How.XPATH, using = "//div[@class='w-100 g-3 row-cols-5 hide-scrollbar m-0 row']//div[@class='col']")
+    @FindBy(how = How.XPATH, using = "//div[@class='GridStyle__StyledGrid-sc-1r6thsr-0 ihvoBx']")
     @CacheLookup
     private List<WebElement> listItem;
 
     //d-flex flex-row w-100 mt-3
-    @FindBy(how = How.XPATH, using = "//div[@class='d-flex flex-row w-100 mt-3']//button")
+    @FindBy(how = How.XPATH, using = "//div[@class='ps-document']//p")
     @CacheLookup
-    private List<WebElement> listInfoButton;
+    private List<WebElement> listInfoContent;
     //fs-7
     //[@class='fs-7']
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'shareDescContainer')]//p")
@@ -48,9 +46,13 @@ public class SearchResultPage {
     private List<WebElement> listImages;
 
     //fw-bolder mb-3
-    @FindBy(how = How.XPATH, using = "//h3[@class='fw-bolder mb-3']")
+    @FindBy(how = How.XPATH, using = "//h1[@class='Typography-sc-1nbqu5-0 fvuXSd']")
     @CacheLookup
     private WebElement productName;
+
+    @FindBy(how = How.XPATH, using = "//button[@class='Button-l2616d-0 bDFgyw']")
+    @CacheLookup
+    private WebElement downloadImage;
 
     String pName = null;
 
@@ -58,26 +60,27 @@ public class SearchResultPage {
         return listItem.size();
     }
 
-    public void addtoBasket(){
-        listInfoButton.get(1).click();
-        System.out.println("add to basket"+pName);
-        addTobasketButton.click();
-    }
-//alert
 
-    public void getItemInfo(int item)throws ElementClickInterceptedException{
-            listItem.get(item).click();
-            pName = productName.getText();
-            listInfoButton.get(0).click();
-            String productInfo = infoProduct.getText();
-            Utilities.createNewFolder("D://sellyDownload");
-            Utilities.createFileAndInsert(productInfo, "D://sellyDownload//content.txt");
-
-
+    public void downloadImageButton(){
+        downloadImage.click();
     }
 
-    public void closeProductInfoPopup(){
-        closeProductInfoPopup.click();
+    public void getItemInfo(int item)throws ElementClickInterceptedException {
+        listItem.get(item).click();
+        pName = productName.getText();
+        String productInfo = getProductInformation(listInfoContent);
+        //String productInfo = infoProduct.getText();
+        Utilities.createNewFolder("D://funniMartDownload");
+        Utilities.createFileAndInsert(productInfo, "D://funniMartDownload//content.txt");
+    }
+
+    private String getProductInformation(List<WebElement> listProInfo){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(WebElement proInfo : listProInfo){
+            stringBuilder.append(proInfo.getText());
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
     }
 
     public void downloadInmage(){

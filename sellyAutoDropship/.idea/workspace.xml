@@ -5,15 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f09d35c6-2d5f-4f17-a727-503d7209462f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/sellyAutoDropship.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/sellyAutoDropship.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/FunnimartAutoDropship.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/FunnimartAutoDropship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/driver/SeleniumGridDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/driver/SeleniumGridDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/page/login/Homepage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/page/login/Homepage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/page/login/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/page/login/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/page/login/PasswordPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/page/searchpage/SearchResultPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/page/searchpage/SearchResultPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/service/FunnimartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/service/FunnimartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/service/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/src/main/java/selly/service/Utilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/SellyAutoDropship.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/driver/SeleniumGridDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/driver/SeleniumGridDriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/page/login/Homepage.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/page/login/Homepage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/page/login/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/page/login/LoginPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/page/login/PasswordPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/page/searchpage/SearchResultPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/page/searchpage/SearchResultPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/service/SellyService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/service/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FunnimartAutoDropship/target/classes/selly/service/Utilities.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shopeeAutoDropship/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shopeeAutoDropship/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shopeeAutoDropship/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shopeeAutoDropship/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,13 +218,33 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/NghiaNguyen/dropshipRepo/nghianvtbbv/sellyAutoDropship/pom.xml"
+    "last_opened_file_path": "D:/NghiaNguyen/dropshipRepo/nghiashinhan96/source/FunnimartAutoDropship/pom.xml"
   }
 }]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean install -Dmaven.test.skip=true" />
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="SellyAutoDropship" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="selly.SellyAutoDropship" />
+      <module name="sellyAutoDropship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selly.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SellyAutoDropship" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">

@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+    selenium-selly:
+        image: chrome-driver-selly:latest
+        ports:
+            - 4445:4445
+            - 5557:5557
